@@ -43,4 +43,14 @@ export const COLORS = {
   pdvCategoryBorder: "#e5e7eb",
   pdvCardBg: "#ffffff",
   pdvTotalBg: "#f9fafb",
+
+  // ── Ventas ──────────────────────────────
+  ventaCardBg: "#f9fafb",
+  badgeSinPagarBg: "#fee2e2",
+  badgeSinPagarText: "#ef4444",
+  badgePagadoBg: "#dcfce7",
+  badgePagadoText: "#16a34a",
+  statVentaBg1: "#eff6ff",
+  statVentaBg2: "#f0fdf4",
+  statVentaBg3: "#eef2ff",
 };

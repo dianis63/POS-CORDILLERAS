@@ -140,4 +140,14 @@ export const productosPDV = [
   { id: 5, nombre: "Cheesecake",          categoria: "postres",            talla: null,    precio: 2.50 },
   { id: 6, nombre: "Brownie",             categoria: "postres",            talla: null,    precio: 3.25 },
   { id: 7, nombre: "Pizza Margherita",    categoria: "pizzas",             talla: 'Personal', precio: 5.00 },
+  
+];
+
+export const ventasGuardadas = [
+  { id: "3421697104782", cliente: "Lucero", total: 13.00, hora: "03:29 PM", fecha: "Octubre 16, 2026", productos: 5, nota: "---", estado: "sin-pagar" },
+  { id: "3421697104783", cliente: "Lucero", total: 13.00, hora: "03:29 PM", fecha: "Octubre 16, 2026", productos: 5, nota: "---", estado: "sin-pagar" },
+  { id: "3421697104784", cliente: "Lucero", total: 13.00, hora: "03:29 PM", fecha: "Octubre 16, 2026", productos: 5, nota: "---", estado: "sin-pagar" },
+  { id: "3421697104785", cliente: "Lucero", total: 13.00, hora: "03:29 PM", fecha: "Octubre 16, 2026", productos: 5, nota: "---", estado: "sin-pagar" },
+  { id: "3421697104786", cliente: "Lucero", total: 13.00, hora: "03:29 PM", fecha: "Octubre 16, 2026", productos: 5, nota: "---", estado: "pagado"    },
+  { id: "3421697104787", cliente: "Lucero", total: 13.00, hora: "03:29 PM", fecha: "Octubre 16, 2026", productos: 5, nota: "---", estado: "pagado"    },
 ];
