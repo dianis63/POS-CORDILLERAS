@@ -151,3 +151,63 @@ export const ventasGuardadas = [
   { id: "3421697104786", cliente: "Lucero", total: 13.00, hora: "03:29 PM", fecha: "Octubre 16, 2026", productos: 5, nota: "---", estado: "pagado"    },
   { id: "3421697104787", cliente: "Lucero", total: 13.00, hora: "03:29 PM", fecha: "Octubre 16, 2026", productos: 5, nota: "---", estado: "pagado"    },
 ];
+
+export const empleadosIniciales = [
+  { id: 1,  nombre: "Karen Cecilia",   apellido: "Medina López",     telefono: "7255-7298", cargo: "Gerente",          salario: 750.00 },
+  { id: 2,  nombre: "Luis Alberto",    apellido: "Pérez Gómez",      telefono: "7312-4589", cargo: "Barista",          salario: 450.00 },
+  { id: 3,  nombre: "María José",      apellido: "Hernández Cruz",   telefono: "7245-1187", cargo: "Cajera",           salario: 420.00 },
+  { id: 4,  nombre: "Carlos Daniel",   apellido: "Ramírez López",    telefono: "7880-3345", cargo: "Barista",          salario: 450.00 },
+  { id: 5,  nombre: "Ana Lucía",       apellido: "Torres Mejía",     telefono: "7213-9087", cargo: "Mesera",           salario: 400.00 },
+  { id: 6,  nombre: "José Miguel",     apellido: "Castro Flores",    telefono: "7654-3211", cargo: "Cocinero",         salario: 480.00 },
+  { id: 7,  nombre: "Daniela Sofía",   apellido: "Rivas Sánchez",    telefono: "7011-5066", cargo: "Barista",          salario: 450.00 },
+  { id: 8,  nombre: "Roberto Andrés",  apellido: "Morales Díaz",     telefono: "7383-8890", cargo: "Auxiliar de cocina", salario: 420.00 },
+  { id: 9,  nombre: "Valeria Fernanda",apellido: "Aguilar Ruiz",     telefono: "7444-1023", cargo: "Cajera",           salario: 420.00 },
+  { id: 10, nombre: "Andrea Nicole",   apellido: "Flores Hernández", telefono: "7555-3344", cargo: "Mesero",           salario: 450.00 },
+  { id: 11, nombre: "Diego Alejandro", apellido: "Vásquez Moreno",   telefono: "7221-4433", cargo: "Barista",          salario: 450.00 },
+  { id: 12, nombre: "Sofía Valentina", apellido: "Cruz Portillo",    telefono: "7667-2211", cargo: "Cajera",           salario: 420.00 },
+];
+
+export const ventasTotalesData = [
+  { id: "000001", cliente: "Carlos Méndez",   cantidadProductos: 2, totalVenta: 4.50,  fecha: "2026-01-08", hora: "08:15 a.m." },
+  { id: "000002", cliente: "Laura Pérez",      cantidadProductos: 1, totalVenta: 2.25,  fecha: "2026-01-08", hora: "08:47 a.m." },
+  { id: "000003", cliente: "José Ramírez",     cantidadProductos: 4, totalVenta: 9.00,  fecha: "2026-01-08", hora: "09:10 a.m." },
+  { id: "000004", cliente: "María López",      cantidadProductos: 3, totalVenta: 6.75,  fecha: "2026-01-08", hora: "09:55 a.m." },
+  { id: "000005", cliente: "Andrés Castillo",  cantidadProductos: 2, totalVenta: 4.50,  fecha: "2026-01-08", hora: "10:20 a.m." },
+  { id: "000006", cliente: "Sofía Hernández",  cantidadProductos: 1, totalVenta: 2.50,  fecha: "2026-01-08", hora: "11:05 a.m." },
+  { id: "000007", cliente: "Luis Matínez",     cantidadProductos: 5, totalVenta: 11.25, fecha: "2026-01-08", hora: "11:40 a.m." },
+  { id: "000008", cliente: "Daniela Gómez",    cantidadProductos: 2, totalVenta: 4.75,  fecha: "2026-01-08", hora: "12:15 p.m." },
+  { id: "000009", cliente: "Miguel Torres",    cantidadProductos: 3, totalVenta: 7.50,  fecha: "2026-01-08", hora: "01:05 p.m." },
+  { id: "000010", cliente: "Elena Vargas",     cantidadProductos: 1, totalVenta: 2.00,  fecha: "2026-01-08", hora: "01:45 p.m." },
+];
+
+export const ventasProductosData = [
+  { nombre: "Espresso",           cantidadProductos: 5, tamanio: "12 oz",     precioUnitario: 1.50, total: 7.50,  fecha: "2026-01-08" },
+  { nombre: "Americano",          cantidadProductos: 3, tamanio: "8 oz",      precioUnitario: 1.75, total: 5.25,  fecha: "2026-01-08" },
+  { nombre: "Cappuccino",         cantidadProductos: 4, tamanio: "16 oz",     precioUnitario: 2.50, total: 10.00, fecha: "2026-01-08" },
+  { nombre: "Latte",              cantidadProductos: 6, tamanio: "16 oz",     precioUnitario: 2.75, total: 16.50, fecha: "2026-01-08" },
+  { nombre: "Mocha",              cantidadProductos: 2, tamanio: "12 oz",     precioUnitario: 3.00, total: 7.00,  fecha: "2026-01-08" },
+  { nombre: "Frappé de vainilla", cantidadProductos: 3, tamanio: "12 oz",     precioUnitario: 3.50, total: 6.75,  fecha: "2026-01-08" },
+  { nombre: "Té frío de durazno", cantidadProductos: 4, tamanio: "16 oz",     precioUnitario: 2.25, total: 13.00, fecha: "2026-01-08" },
+  { nombre: "Brownie",            cantidadProductos: 5, tamanio: "1 porción", precioUnitario: 2.00, total: 12.50, fecha: "2026-01-08" },
+  { nombre: "Cheesecake",         cantidadProductos: 3, tamanio: "1 porción", precioUnitario: 3.25, total: 4.50,  fecha: "2026-01-08" },
+  { nombre: "Alfajor",            cantidadProductos: 2, tamanio: "1 porción", precioUnitario: 2.50, total: 5.50,  fecha: "2026-01-08" },
+];
+
+export const ventasCategoriasData = [
+  { categoria: "Bebidas calientes", cantidadProductos: 20, total: 46.25, fecha: "2026-01-08" },
+  { categoria: "Bebidas frías",     cantidadProductos: 7,  total: 19.65, fecha: "2026-01-08" },
+  { categoria: "Postres",           cantidadProductos: 10, total: 7.75,  fecha: "2026-01-08" },
+];
+
+export const auditoriaData = [
+  { idReporte: "000001", idUsuario: "000001", tipoReporte: "Ventas diarias",       fechaReporte: "2026-01-08" },
+  { idReporte: "000002", idUsuario: "000001", tipoReporte: "Ventas por productos", fechaReporte: "2026-01-08" },
+  { idReporte: "000003", idUsuario: "000001", tipoReporte: "Ventas por categoría", fechaReporte: "2026-01-08" },
+  { idReporte: "000004", idUsuario: "000001", tipoReporte: "Ventas diarias",       fechaReporte: "2026-01-09" },
+  { idReporte: "000005", idUsuario: "000001", tipoReporte: "Ventas por productos", fechaReporte: "2026-01-09" },
+  { idReporte: "000006", idUsuario: "000001", tipoReporte: "Ventas por categoría", fechaReporte: "2026-01-09" },
+  { idReporte: "000007", idUsuario: "000001", tipoReporte: "Ventas diarias",       fechaReporte: "2026-01-10" },
+  { idReporte: "000008", idUsuario: "000001", tipoReporte: "Ventas por productos", fechaReporte: "2026-01-10" },
+  { idReporte: "000009", idUsuario: "000001", tipoReporte: "Ventas por categoría", fechaReporte: "2026-01-10" },
+  { idReporte: "000010", idUsuario: "000001", tipoReporte: "Ventas diarias",       fechaReporte: "2026-01-11" },
+];

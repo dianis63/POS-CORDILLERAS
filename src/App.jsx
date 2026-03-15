@@ -5,12 +5,10 @@ import ClientesPage  from "./pages/ClientesPage";
 import ProductosPage from "./pages/ProductosPage";
 import InsumosPage from "./pages/InsumosPage";
 import CategoriasPage from "./pages/CategoriasPage";
-
-// Agrega aquí los demás imports cuando crees las páginas:
-// import ReportesPage     from "./pages/ReportesPage";
+import ReportesPage from "./pages/ReportesPage";
 import PuntoDeVentaPage from "./pages/PuntoDeVentaPage";
 import VentasPage       from "./pages/VentasPage";
-// import EmpleadosPage    from "./pages/EmpleadosPage";
+import EmpleadosPage from "./pages/EmpleadosPage";
 
 export default function App() {
   const [loggedIn,    setLoggedIn]    = useState(false);
@@ -32,12 +30,10 @@ export default function App() {
     case "productos": return <ProductosPage {...sharedProps} />;
     case "insumos": return <InsumosPage {...sharedProps} />;
     case "categorias": return <CategoriasPage {...sharedProps} />;
-
-    // Cuando vayas creando las demás páginas, descomenta:
-    // case "reportes":       return <ReportesPage     {...sharedProps} />;
+    case "reportes": return <ReportesPage {...sharedProps} />;
     case "punto-de-venta": return <PuntoDeVentaPage {...sharedProps} />;
     case "ventas":         return <VentasPage       {...sharedProps} />;
-    // case "empleados":      return <EmpleadosPage    {...sharedProps} />;
+    case "empleados": return <EmpleadosPage {...sharedProps} />;
 
     default: return <DashboardPage {...sharedProps} />;
   }
