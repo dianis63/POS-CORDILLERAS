@@ -71,3 +71,56 @@ export const clientesIniciales = [
   { id: 19, nombre: "Mateo",           apellido: "Ruiz Salazar",      correo: "mateo.ruiz@gmail.com"        },
   { id: 20, nombre: "Camila Andrea",   apellido: "Parra Medina",      correo: "camila.parra@gmail.com"      },
 ];
+
+export const CATEGORIAS = [
+  "Bebida caliente",
+  "Bebida fría",
+  "Postres",
+  "Snacks",
+  "Otros",
+];
+
+export const productosIniciales = [
+  { id: 1,  nombre: "Espresso",           categoria: "Bebida caliente", precioUnitario: 1.50, tamanio: "12 oz",     estado: true  },
+  { id: 2,  nombre: "Americano",          categoria: "Bebida caliente", precioUnitario: 1.75, tamanio: "8 oz",      estado: true  },
+  { id: 3,  nombre: "Cappuccino",         categoria: "Bebida caliente", precioUnitario: 2.50, tamanio: "16 oz",     estado: true  },
+  { id: 4,  nombre: "Latte",              categoria: "Bebida caliente", precioUnitario: 2.75, tamanio: "16 oz",     estado: true  },
+  { id: 5,  nombre: "Mocha",              categoria: "Bebida caliente", precioUnitario: 3.00, tamanio: "12 oz",     estado: false },
+  { id: 6,  nombre: "Frappé de vainilla", categoria: "Bebida fría",     precioUnitario: 3.50, tamanio: "12 oz",     estado: true  },
+  { id: 7,  nombre: "Té frío de durazno", categoria: "Bebida fría",     precioUnitario: 2.25, tamanio: "16 oz",     estado: true  },
+  { id: 8,  nombre: "Brownie",            categoria: "Postres",         precioUnitario: 2.00, tamanio: "1 porción", estado: false },
+  { id: 9,  nombre: "Cheesecake",         categoria: "Postres",         precioUnitario: 3.25, tamanio: "1 porción", estado: true  },
+  { id: 10, nombre: "Alfajor",            categoria: "Postres",         precioUnitario: 2.50, tamanio: "1 porción", estado: true  },
+  { id: 11, nombre: "Macchiato",          categoria: "Bebida caliente", precioUnitario: 2.00, tamanio: "8 oz",      estado: true  },
+  { id: 12, nombre: "Cold Brew",          categoria: "Bebida fría",     precioUnitario: 3.00, tamanio: "16 oz",     estado: true  },
+  { id: 13, nombre: "Muffin de arándano", categoria: "Postres",         precioUnitario: 1.75, tamanio: "1 porción", estado: true  },
+  { id: 14, nombre: "Granola Bar",        categoria: "Snacks",          precioUnitario: 1.50, tamanio: "1 unidad",  estado: true  },
+  { id: 15, nombre: "Matcha Latte",       categoria: "Bebida caliente", precioUnitario: 3.25, tamanio: "12 oz",     estado: true  },
+];
+
+
+export const insumosIniciales = [
+  { id: 1,  nombre: "Café en grano",      medida: "kg",       stockActual: 8,   stockMinimo: 2,   precioCompra: 6.50, vencimiento: "2027-11-08", ultimaCompra: "2026-01-30" },
+  { id: 2,  nombre: "Azúcar blanca",      medida: "kg",       stockActual: 12,  stockMinimo: 3,   precioCompra: 1.40, vencimiento: "2026-11-01", ultimaCompra: "2026-01-13" },
+  { id: 3,  nombre: "Leche entera",       medida: "litros",   stockActual: 25,  stockMinimo: 8,   precioCompra: 0.95, vencimiento: "2026-06-12", ultimaCompra: "2026-01-27" },
+  { id: 4,  nombre: "Leche deslactosada", medida: "litros",   stockActual: 10,  stockMinimo: 4,   precioCompra: 1.10, vencimiento: "2026-04-28", ultimaCompra: "2026-01-13" },
+  { id: 5,  nombre: "Chocolate en polvo", medida: "kg",       stockActual: 5,   stockMinimo: 2,   precioCompra: 4.20, vencimiento: "2026-07-17", ultimaCompra: "2026-01-27" },
+  { id: 6,  nombre: "Té en bolsitas",     medida: "unidades", stockActual: 80,  stockMinimo: 20,  precioCompra: 0.08, vencimiento: "2026-08-22", ultimaCompra: "2026-01-30" },
+  { id: 7,  nombre: "Canela en polvo",    medida: "gr",       stockActual: 500, stockMinimo: 100, precioCompra: 0.02, vencimiento: "2026-11-29", ultimaCompra: "2026-01-26" },
+  { id: 8,  nombre: "Vainilla líquida",   medida: "ml",       stockActual: 750, stockMinimo: 200, precioCompra: 0.01, vencimiento: "2026-09-01", ultimaCompra: "2026-01-15" },
+  { id: 9,  nombre: "Harina de trigo",    medida: "kg",       stockActual: 15,  stockMinimo: 5,   precioCompra: 0.90, vencimiento: "2026-10-30", ultimaCompra: "2026-01-21" },
+  { id: 10, nombre: "Mantequilla",        medida: "kg",       stockActual: 6,   stockMinimo: 2,   precioCompra: 3.80, vencimiento: "2027-01-25", ultimaCompra: "2026-01-15" },
+  { id: 11, nombre: "Crema de leche",     medida: "litros",   stockActual: 8,   stockMinimo: 3,   precioCompra: 1.20, vencimiento: "2026-05-10", ultimaCompra: "2026-01-20" },
+  { id: 12, nombre: "Cacao en polvo",     medida: "kg",       stockActual: 4,   stockMinimo: 1,   precioCompra: 3.50, vencimiento: "2026-12-01", ultimaCompra: "2026-01-18" },
+  { id: 13, nombre: "Stevia",             medida: "gr",       stockActual: 200, stockMinimo: 50,  precioCompra: 0.05, vencimiento: "2027-03-15", ultimaCompra: "2026-01-10" },
+  { id: 14, nombre: "Sirope de vainilla", medida: "ml",       stockActual: 500, stockMinimo: 100, precioCompra: 0.03, vencimiento: "2026-08-01", ultimaCompra: "2026-01-22" },
+  { id: 15, nombre: "Sal",               medida: "kg",       stockActual: 3,   stockMinimo: 1,   precioCompra: 0.50, vencimiento: "2028-01-01", ultimaCompra: "2026-01-05" },
+];
+
+export const categoriasIniciales = [
+  { id: 1, nombre: "Bebidas calientes", descripcion: "Bebidas servidas a alta temperatura como café, té y chocolate." },
+  { id: 2, nombre: "Bebidas frías",     descripcion: "Bebidas servidas frías o con hielo, como frappés, jugos y refrescos." },
+  { id: 3, nombre: "Postres",           descripcion: "Productos dulces como pasteles, galletas y otros acompañamientos." },
+  { id: 4, nombre: "Snacks",            descripcion: "Botanas y productos ligeros para acompañar bebidas." },
+  { id: 5, nombre: "Otros",             descripcion: "Productos que no encajan en las categorías anteriores." },
+];
