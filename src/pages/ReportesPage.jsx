@@ -297,11 +297,12 @@ export default function ReportesPage({ currentPage, onNavigate, onLogout }) {
           </main>
 
           {notifOpen && (
-            <NotifPanel
-              productosVencer={productosVencer}
-              productosAgotar={productosAgotar}
-            />
-          )}
+        <NotifPanel
+          productosVencer={productosVencer}
+          productosAgotar={productosAgotar}
+          onClose={() => setNotifOpen(false)}
+        />
+      )}
         </div>
       </div>
     </div>

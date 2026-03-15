@@ -5,7 +5,8 @@ import { PDVCategorias }    from "../components/puntoDeVenta/PDVCategorias";
 import { PDVProductos }     from "../components/puntoDeVenta/PDVProductos";
 import { PDVTicket }        from "../components/puntoDeVenta/PDVTicket";
 import { PDVNotaModal }     from "../components/puntoDeVenta/PDVNotaModal";
-import { categoriasPDV, productosPDV } from "../data/mockData";
+import { NotifPanel }       from "../components/dashboard/NotifPanel";
+import { categoriasPDV, productosPDV, productosVencer, productosAgotar } from "../data/mockData";
 import { COLORS }           from "../constants/colors";
 
 export default function PuntoDeVentaPage({ currentPage, onNavigate, onLogout }) {
@@ -75,7 +76,6 @@ export default function PuntoDeVentaPage({ currentPage, onNavigate, onLogout }) 
               />
             </div>
 
-            {/* w-[26rem] = un poco más ancho que w-96 (24rem) */}
             <div className="w-[26rem] flex-shrink-0">
               <PDVTicket
                 items={items}
@@ -100,6 +100,14 @@ export default function PuntoDeVentaPage({ currentPage, onNavigate, onLogout }) 
         onClose={() => setNotaModalOpen(false)}
         onGuardar={(val) => { setNota(val); setNotaModalOpen(false); }}
       />
+
+      {notifOpen && (
+        <NotifPanel
+          productosVencer={productosVencer}
+          productosAgotar={productosAgotar}
+          onClose={() => setNotifOpen(false)}
+        />
+      )}
     </div>
   );
 }

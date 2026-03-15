@@ -5,20 +5,20 @@ import { ProductosToolbar }      from "../components/productos/ProductosToolbar"
 import { ProductosTable }        from "../components/productos/ProductosTable";
 import { ProductosPagination }   from "../components/productos/ProductosPagination";
 import { ProductoForm }          from "../components/productos/ProductoForm";
+import { NotifPanel }            from "../components/dashboard/NotifPanel";
 import { productosIniciales, productosVencer, productosAgotar } from "../data/mockData";
 import { COLORS }                from "../constants/colors";
-import { NotifPanel } from "../components/dashboard/NotifPanel";
 
 const PER_PAGE = 10;
 
 export default function ProductosPage({ currentPage, onNavigate, onLogout }) {
-  const [productos,    setProductos]    = useState(productosIniciales);
-  const [selected,     setSelected]     = useState([]);
-  const [busqueda,     setBusqueda]     = useState("");
-  const [pagina,       setPagina]       = useState(1);
-  const [sidebarOpen,  setSidebarOpen]  = useState(true);
-  const [notifOpen,    setNotifOpen]    = useState(false);
-  const [vista,        setVista]        = useState(null);
+  const [productos,   setProductos]   = useState(productosIniciales);
+  const [selected,    setSelected]    = useState([]);
+  const [busqueda,    setBusqueda]    = useState("");
+  const [pagina,      setPagina]      = useState(1);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [notifOpen,   setNotifOpen]   = useState(false);
+  const [vista,       setVista]       = useState(null);
 
   const filtrados = productos.filter(({ nombre, categoria, tamanio }) => {
     const q = busqueda.toLowerCase();
@@ -80,52 +80,51 @@ export default function ProductosPage({ currentPage, onNavigate, onLogout }) {
           setNotifOpen={setNotifOpen}
         />
 
-        <div className="flex flex-1 overflow-hidden">
-          <main className="flex-1 overflow-y-auto p-6">
-            <h1 className="text-xl font-bold mb-5" style={{ color: COLORS.textPrimary }}>
-              Productos
-            </h1>
+        <main className="flex-1 overflow-y-auto p-6">
+          <h1 className="text-xl font-bold mb-5" style={{ color: COLORS.textPrimary }}>
+            Productos
+          </h1>
 
-            {vista ? (
-              <ProductoForm
-                producto={productoEditando}
-                onSave={handleGuardar}
-                onCancel={() => setVista(null)}
-              />
-            ) : (
-              <>
-                <ProductosToolbar
-                  selected={selected}
-                  onAgregar={() => setVista("nuevo")}
-                  onEliminar={handleEliminar}
-                  busqueda={busqueda}
-                  onBusqueda={(val) => { setBusqueda(val); setPagina(1); }}
-                />
-                <ProductosTable
-                  visibles={visibles}
-                  selected={selected}
-                  allChecked={allChecked}
-                  onToggleAll={toggleAll}
-                  onToggleOne={toggleOne}
-                  onEditar={(p) => setVista(p)}
-                />
-                <ProductosPagination
-                  paginaActual={paginaActual}
-                  totalPaginas={totalPaginas}
-                  onCambiar={setPagina}
-                />
-              </>
-            )}
-          </main>
-
-          {notifOpen && (
-            <NotifPanel
-              productosVencer={productosVencer}
-              productosAgotar={productosAgotar}
+          {vista ? (
+            <ProductoForm
+              producto={productoEditando}
+              onSave={handleGuardar}
+              onCancel={() => setVista(null)}
             />
+          ) : (
+            <>
+              <ProductosToolbar
+                selected={selected}
+                onAgregar={() => setVista("nuevo")}
+                onEliminar={handleEliminar}
+                busqueda={busqueda}
+                onBusqueda={(val) => { setBusqueda(val); setPagina(1); }}
+              />
+              <ProductosTable
+                visibles={visibles}
+                selected={selected}
+                allChecked={allChecked}
+                onToggleAll={toggleAll}
+                onToggleOne={toggleOne}
+                onEditar={(p) => setVista(p)}
+              />
+              <ProductosPagination
+                paginaActual={paginaActual}
+                totalPaginas={totalPaginas}
+                onCambiar={setPagina}
+              />
+            </>
           )}
-        </div>
+        </main>
       </div>
+
+      {notifOpen && (
+        <NotifPanel
+          productosVencer={productosVencer}
+          productosAgotar={productosAgotar}
+          onClose={() => setNotifOpen(false)}
+        />
+      )}
     </div>
   );
 }

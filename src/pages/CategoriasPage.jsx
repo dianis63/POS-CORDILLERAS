@@ -78,52 +78,51 @@ export default function CategoriasPage({ currentPage, onNavigate, onLogout }) {
           setNotifOpen={setNotifOpen}
         />
 
-        <div className="flex flex-1 overflow-hidden">
-          <main className="flex-1 overflow-y-auto p-6">
-            <h1 className="text-xl font-bold mb-5" style={{ color: COLORS.textPrimary }}>
-              Categorías
-            </h1>
+        <main className="flex-1 overflow-y-auto p-6">
+          <h1 className="text-xl font-bold mb-5" style={{ color: COLORS.textPrimary }}>
+            Categorías
+          </h1>
 
-            {vista ? (
-              <CategoriaForm
-                categoria={categoriaEditando}
-                onSave={handleGuardar}
-                onCancel={() => setVista(null)}
-              />
-            ) : (
-              <>
-                <CategoriasToolbar
-                  selected={selected}
-                  onAgregar={() => setVista("nuevo")}
-                  onEliminar={handleEliminar}
-                  busqueda={busqueda}
-                  onBusqueda={(val) => { setBusqueda(val); setPagina(1); }}
-                />
-                <CategoriasTable
-                  visibles={visibles}
-                  selected={selected}
-                  allChecked={allChecked}
-                  onToggleAll={toggleAll}
-                  onToggleOne={toggleOne}
-                  onEditar={(c) => setVista(c)}
-                />
-                <CategoriasPagination
-                  paginaActual={paginaActual}
-                  totalPaginas={totalPaginas}
-                  onCambiar={setPagina}
-                />
-              </>
-            )}
-          </main>
-
-          {notifOpen && (
-            <NotifPanel
-              productosVencer={productosVencer}
-              productosAgotar={productosAgotar}
+          {vista ? (
+            <CategoriaForm
+              categoria={categoriaEditando}
+              onSave={handleGuardar}
+              onCancel={() => setVista(null)}
             />
+          ) : (
+            <>
+              <CategoriasToolbar
+                selected={selected}
+                onAgregar={() => setVista("nuevo")}
+                onEliminar={handleEliminar}
+                busqueda={busqueda}
+                onBusqueda={(val) => { setBusqueda(val); setPagina(1); }}
+              />
+              <CategoriasTable
+                visibles={visibles}
+                selected={selected}
+                allChecked={allChecked}
+                onToggleAll={toggleAll}
+                onToggleOne={toggleOne}
+                onEditar={(c) => setVista(c)}
+              />
+              <CategoriasPagination
+                paginaActual={paginaActual}
+                totalPaginas={totalPaginas}
+                onCambiar={setPagina}
+              />
+            </>
           )}
-        </div>
+        </main>
       </div>
+
+      {notifOpen && (
+        <NotifPanel
+          productosVencer={productosVencer}
+          productosAgotar={productosAgotar}
+          onClose={() => setNotifOpen(false)}
+        />
+      )}
     </div>
   );
 }

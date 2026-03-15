@@ -5,7 +5,8 @@ import { ClientesToolbar }    from "../components/clientes/ClientesToolbar";
 import { ClientesTable }      from "../components/clientes/ClientesTable";
 import { ClientesPagination } from "../components/clientes/ClientesPagination";
 import { ClienteForm }        from "../components/clientes/ClienteForm";
-import { clientesIniciales }  from "../data/mockData";
+import { NotifPanel }         from "../components/dashboard/NotifPanel";
+import { clientesIniciales, productosVencer, productosAgotar } from "../data/mockData";
 import { COLORS }             from "../constants/colors";
 
 const PER_PAGE = 10;
@@ -17,11 +18,8 @@ export default function ClientesPage({ currentPage, onNavigate, onLogout }) {
   const [pagina,      setPagina]      = useState(1);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [notifOpen,   setNotifOpen]   = useState(false);
+  const [vista,       setVista]       = useState(null);
 
-  // null  = vista tabla  |  "nuevo" = formulario vacío  |  objeto = formulario edición
-  const [vista, setVista] = useState(null);
-
-  // ── Filtrado y paginación ──────────────
   const filtrados    = clientes.filter(({ nombre, apellido, correo }) => {
     const q = busqueda.toLowerCase();
     return nombre.toLowerCase().includes(q)  ||
@@ -32,7 +30,6 @@ export default function ClientesPage({ currentPage, onNavigate, onLogout }) {
   const paginaActual = Math.min(pagina, totalPaginas);
   const visibles     = filtrados.slice((paginaActual - 1) * PER_PAGE, paginaActual * PER_PAGE);
 
-  // ── Selección ─────────────────────────
   const ids        = visibles.map((c) => c.id);
   const allChecked = visibles.length > 0 && ids.every((id) => selected.includes(id));
 
@@ -46,13 +43,10 @@ export default function ClientesPage({ currentPage, onNavigate, onLogout }) {
   const toggleOne = (id) =>
     setSelected((p) => p.includes(id) ? p.filter((x) => x !== id) : [...p, id]);
 
-  // ── CRUD ──────────────────────────────
   const handleGuardar = (form) => {
     if (vista && vista !== "nuevo") {
-      // edición
       setClientes((p) => p.map((c) => c.id === vista.id ? { ...c, ...form } : c));
     } else {
-      // nuevo
       const id = Math.max(0, ...clientes.map((c) => c.id)) + 1;
       setClientes((p) => [...p, { id, ...form }]);
     }
@@ -92,14 +86,12 @@ export default function ClientesPage({ currentPage, onNavigate, onLogout }) {
           </h1>
 
           {vista ? (
-            /* ── Vista formulario ── */
             <ClienteForm
               cliente={clienteEditando}
               onSave={handleGuardar}
               onCancel={() => setVista(null)}
             />
           ) : (
-            /* ── Vista tabla ── */
             <>
               <ClientesToolbar
                 selected={selected}
@@ -125,6 +117,14 @@ export default function ClientesPage({ currentPage, onNavigate, onLogout }) {
           )}
         </main>
       </div>
+
+      {notifOpen && (
+        <NotifPanel
+          productosVencer={productosVencer}
+          productosAgotar={productosAgotar}
+          onClose={() => setNotifOpen(false)}
+        />
+      )}
     </div>
   );
 }

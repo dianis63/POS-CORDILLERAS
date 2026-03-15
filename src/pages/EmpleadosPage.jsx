@@ -80,52 +80,51 @@ export default function EmpleadosPage({ currentPage, onNavigate, onLogout }) {
           setNotifOpen={setNotifOpen}
         />
 
-        <div className="flex flex-1 overflow-hidden">
-          <main className="flex-1 overflow-y-auto p-6">
-            <h1 className="text-xl font-bold mb-5" style={{ color: COLORS.textPrimary }}>
-              Empleados
-            </h1>
+        <main className="flex-1 overflow-y-auto p-6">
+          <h1 className="text-xl font-bold mb-5" style={{ color: COLORS.textPrimary }}>
+            Empleados
+          </h1>
 
-            {vista ? (
-              <EmpleadoForm
-                empleado={empleadoEditando}
-                onSave={handleGuardar}
-                onCancel={() => setVista(null)}
-              />
-            ) : (
-              <>
-                <EmpleadosToolbar
-                  selected={selected}
-                  onAgregar={() => setVista("nuevo")}
-                  onEliminar={handleEliminar}
-                  busqueda={busqueda}
-                  onBusqueda={(val) => { setBusqueda(val); setPagina(1); }}
-                />
-                <EmpleadosTable
-                  visibles={visibles}
-                  selected={selected}
-                  allChecked={allChecked}
-                  onToggleAll={toggleAll}
-                  onToggleOne={toggleOne}
-                  onEditar={(e) => setVista(e)}
-                />
-                <EmpleadosPagination
-                  paginaActual={paginaActual}
-                  totalPaginas={totalPaginas}
-                  onCambiar={setPagina}
-                />
-              </>
-            )}
-          </main>
-
-          {notifOpen && (
-            <NotifPanel
-              productosVencer={productosVencer}
-              productosAgotar={productosAgotar}
+          {vista ? (
+            <EmpleadoForm
+              empleado={empleadoEditando}
+              onSave={handleGuardar}
+              onCancel={() => setVista(null)}
             />
+          ) : (
+            <>
+              <EmpleadosToolbar
+                selected={selected}
+                onAgregar={() => setVista("nuevo")}
+                onEliminar={handleEliminar}
+                busqueda={busqueda}
+                onBusqueda={(val) => { setBusqueda(val); setPagina(1); }}
+              />
+              <EmpleadosTable
+                visibles={visibles}
+                selected={selected}
+                allChecked={allChecked}
+                onToggleAll={toggleAll}
+                onToggleOne={toggleOne}
+                onEditar={(e) => setVista(e)}
+              />
+              <EmpleadosPagination
+                paginaActual={paginaActual}
+                totalPaginas={totalPaginas}
+                onCambiar={setPagina}
+              />
+            </>
           )}
-        </div>
+        </main>
       </div>
+
+      {notifOpen && (
+        <NotifPanel
+          productosVencer={productosVencer}
+          productosAgotar={productosAgotar}
+          onClose={() => setNotifOpen(false)}
+        />
+      )}
     </div>
   );
 }

@@ -1,13 +1,13 @@
-import { useState }             from "react";
-import { Sidebar }              from "../components/layout/Sidebar";
-import { Topbar }               from "../components/layout/Topbar";
-import { InsumosToolbar }       from "../components/insumos/InsumosToolbar";
-import { InsumosTable }         from "../components/insumos/InsumosTable";
-import { InsumosPagination }    from "../components/insumos/InsumosPagination";
-import { InsumoForm }           from "../components/insumos/InsumoForm";
-import { NotifPanel }           from "../components/dashboard/NotifPanel";
+import { useState }           from "react";
+import { Sidebar }            from "../components/layout/Sidebar";
+import { Topbar }             from "../components/layout/Topbar";
+import { InsumosToolbar }     from "../components/insumos/InsumosToolbar";
+import { InsumosTable }       from "../components/insumos/InsumosTable";
+import { InsumosPagination }  from "../components/insumos/InsumosPagination";
+import { InsumoForm }         from "../components/insumos/InsumoForm";
+import { NotifPanel }         from "../components/dashboard/NotifPanel";
 import { insumosIniciales, productosVencer, productosAgotar } from "../data/mockData";
-import { COLORS }               from "../constants/colors";
+import { COLORS }             from "../constants/colors";
 
 const PER_PAGE = 10;
 
@@ -78,52 +78,51 @@ export default function InsumosPage({ currentPage, onNavigate, onLogout }) {
           setNotifOpen={setNotifOpen}
         />
 
-        <div className="flex flex-1 overflow-hidden">
-          <main className="flex-1 overflow-y-auto p-6">
-            <h1 className="text-xl font-bold mb-5" style={{ color: COLORS.textPrimary }}>
-              Insumos
-            </h1>
+        <main className="flex-1 overflow-y-auto p-6">
+          <h1 className="text-xl font-bold mb-5" style={{ color: COLORS.textPrimary }}>
+            Insumos
+          </h1>
 
-            {vista ? (
-              <InsumoForm
-                insumo={insumoEditando}
-                onSave={handleGuardar}
-                onCancel={() => setVista(null)}
-              />
-            ) : (
-              <>
-                <InsumosToolbar
-                  selected={selected}
-                  onAgregar={() => setVista("nuevo")}
-                  onEliminar={handleEliminar}
-                  busqueda={busqueda}
-                  onBusqueda={(val) => { setBusqueda(val); setPagina(1); }}
-                />
-                <InsumosTable
-                  visibles={visibles}
-                  selected={selected}
-                  allChecked={allChecked}
-                  onToggleAll={toggleAll}
-                  onToggleOne={toggleOne}
-                  onEditar={(i) => setVista(i)}
-                />
-                <InsumosPagination
-                  paginaActual={paginaActual}
-                  totalPaginas={totalPaginas}
-                  onCambiar={setPagina}
-                />
-              </>
-            )}
-          </main>
-
-          {notifOpen && (
-            <NotifPanel
-              productosVencer={productosVencer}
-              productosAgotar={productosAgotar}
+          {vista ? (
+            <InsumoForm
+              insumo={insumoEditando}
+              onSave={handleGuardar}
+              onCancel={() => setVista(null)}
             />
+          ) : (
+            <>
+              <InsumosToolbar
+                selected={selected}
+                onAgregar={() => setVista("nuevo")}
+                onEliminar={handleEliminar}
+                busqueda={busqueda}
+                onBusqueda={(val) => { setBusqueda(val); setPagina(1); }}
+              />
+              <InsumosTable
+                visibles={visibles}
+                selected={selected}
+                allChecked={allChecked}
+                onToggleAll={toggleAll}
+                onToggleOne={toggleOne}
+                onEditar={(i) => setVista(i)}
+              />
+              <InsumosPagination
+                paginaActual={paginaActual}
+                totalPaginas={totalPaginas}
+                onCambiar={setPagina}
+              />
+            </>
           )}
-        </div>
+        </main>
       </div>
+
+      {notifOpen && (
+        <NotifPanel
+          productosVencer={productosVencer}
+          productosAgotar={productosAgotar}
+          onClose={() => setNotifOpen(false)}
+        />
+      )}
     </div>
   );
 }

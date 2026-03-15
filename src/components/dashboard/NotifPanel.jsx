@@ -1,7 +1,7 @@
-import { AlertTriangle } from "lucide-react";
+import { AlertTriangle, X } from "lucide-react";
 import { COLORS } from "../../constants/colors";
 
-function NotifItem({ nombre, tiempo, badge, urgencia, type }) {
+function NotifItem({ nombre, tiempo, badge, urgencia }) {
   const bgMap   = { red: "#fee2e2", orange: "#ffedd5", gray: "#f3f4f6" };
   const textMap = { red: "#dc2626", orange: "#ea580c", gray: "#6b7280" };
 
@@ -32,50 +32,56 @@ function NotifItem({ nombre, tiempo, badge, urgencia, type }) {
   );
 }
 
-export function NotifPanel({ productosVencer, productosAgotar }) {
+export function NotifPanel({ productosVencer, productosAgotar, onClose }) {
   return (
-    <aside
-      className="w-56 flex-shrink-0 border-l p-4 space-y-4 overflow-y-auto"
-      style={{
-        borderColor:     COLORS.borderColor,
-        backgroundColor: COLORS.topbarBg,
-      }}
-    >
-      <p className="text-xs font-semibold" style={{ color: COLORS.textPrimary }}>
-        Notificaciones
-      </p>
+    <>
+      {/* Overlay para cerrar al hacer clic fuera */}
+      <div
+        className="fixed inset-0 z-40"
+        onClick={onClose}
+      />
 
-      {/* Por caducar */}
-      <div>
-        <p className="text-xs font-semibold mb-2" style={{ color: COLORS.textSecondary }}>
-          Por caducar
-        </p>
-        {productosVencer.map((p) => (
-          <NotifItem
-            key={p.nombre}
-            nombre={p.nombre}
-            tiempo={p.tiempo}
-            badge={p.dias}
-            urgencia={p.urgencia}
-          />
-        ))}
-      </div>
+      {/* Panel */}
+      <aside
+        className="fixed z-50 top-[49px] right-0 w-56 border-l shadow-xl p-4 space-y-4 overflow-y-auto"
+        style={{
+          borderColor:     COLORS.borderColor,
+          backgroundColor: COLORS.topbarBg,
+          height:          "calc(100vh - 49px)",
+        }}
+      >
+        <div className="flex items-center justify-between">
+          <p className="text-xs font-semibold" style={{ color: COLORS.textPrimary }}>
+            Notificaciones
+          </p>
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="p-1 rounded-lg hover:bg-gray-100 transition-colors"
+            >
+              <X size={13} style={{ color: COLORS.textSecondary }} />
+            </button>
+          )}
+        </div>
 
-      {/* Por agotarse */}
-      <div>
-        <p className="text-xs font-semibold mb-2" style={{ color: COLORS.textSecondary }}>
-          Por agotarse
-        </p>
-        {productosAgotar.map((p) => (
-          <NotifItem
-            key={p.nombre}
-            nombre={p.nombre}
-            tiempo={p.tiempo}
-            badge={p.unidades}
-            urgencia={p.urgencia}
-          />
-        ))}
-      </div>
-    </aside>
+        <div>
+          <p className="text-xs font-semibold mb-2" style={{ color: COLORS.textSecondary }}>
+            Por caducar
+          </p>
+          {productosVencer.map((p) => (
+            <NotifItem key={p.nombre} nombre={p.nombre} tiempo={p.tiempo} badge={p.dias}     urgencia={p.urgencia} />
+          ))}
+        </div>
+
+        <div>
+          <p className="text-xs font-semibold mb-2" style={{ color: COLORS.textSecondary }}>
+            Por agotarse
+          </p>
+          {productosAgotar.map((p) => (
+            <NotifItem key={p.nombre} nombre={p.nombre} tiempo={p.tiempo} badge={p.unidades} urgencia={p.urgencia} />
+          ))}
+        </div>
+      </aside>
+    </>
   );
 }
