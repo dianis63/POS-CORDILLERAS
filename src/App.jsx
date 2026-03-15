@@ -8,7 +8,7 @@ import CategoriasPage from "./pages/CategoriasPage";
 
 // Agrega aquí los demás imports cuando crees las páginas:
 // import ReportesPage     from "./pages/ReportesPage";
-// import PuntoDeVentaPage from "./pages/PuntoDeVentaPage";
+import PuntoDeVentaPage from "./pages/PuntoDeVentaPage";
 // import VentasPage       from "./pages/VentasPage";
 // import EmpleadosPage    from "./pages/EmpleadosPage";
 
@@ -35,7 +35,7 @@ export default function App() {
 
     // Cuando vayas creando las demás páginas, descomenta:
     // case "reportes":       return <ReportesPage     {...sharedProps} />;
-    // case "punto-de-venta": return <PuntoDeVentaPage {...sharedProps} />;
+    case "punto-de-venta": return <PuntoDeVentaPage {...sharedProps} />;
     // case "ventas":         return <VentasPage       {...sharedProps} />;
     // case "empleados":      return <EmpleadosPage    {...sharedProps} />;
 

@@ -36,4 +36,11 @@ export const COLORS = {
   accentRed: "#ef4444",
   accentRedLight: "#fee2e2",
   rowHover: "#f9fafb",
+
+  // ── Punto de venta ──────────────────────
+  pdvCategoryActiveBg: "#eff6ff",
+  pdvCategoryActiveText: "#7181F8",
+  pdvCategoryBorder: "#e5e7eb",
+  pdvCardBg: "#ffffff",
+  pdvTotalBg: "#f9fafb",
 };

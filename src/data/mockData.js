@@ -124,3 +124,20 @@ export const categoriasIniciales = [
   { id: 4, nombre: "Snacks",            descripcion: "Botanas y productos ligeros para acompañar bebidas." },
   { id: 5, nombre: "Otros",             descripcion: "Productos que no encajan en las categorías anteriores." },
 ];
+
+export const categoriasPDV = [
+  { key: "bebidas-frias",    label: "Beb. Frías",     icon: "🥤" },
+  { key: "bebidas-calientes", label: "Beb. Calientes", icon: "☕" },
+  { key: "postres",          label: "Postres",         icon: "🧁" },
+  { key: "pizzas",           label: "Pizzas",          icon: "🍕" },
+];
+
+export const productosPDV = [
+  { id: 1, nombre: "Frappé de vainilla",  categoria: "bebidas-frias",     talla: "12 oz", precio: 3.50 },
+  { id: 2, nombre: "Té frío de durazno",  categoria: "bebidas-frias",     talla: "16 oz", precio: 2.25 },
+  { id: 3, nombre: "Espresso",            categoria: "bebidas-calientes",  talla: "2 oz",  precio: 1.50 },
+  { id: 4, nombre: "Latte",               categoria: "bebidas-calientes",  talla: "12 oz", precio: 3.00 },
+  { id: 5, nombre: "Cheesecake",          categoria: "postres",            talla: null,    precio: 2.50 },
+  { id: 6, nombre: "Brownie",             categoria: "postres",            talla: null,    precio: 3.25 },
+  { id: 7, nombre: "Pizza Margherita",    categoria: "pizzas",             talla: 'Personal', precio: 5.00 },
+];
