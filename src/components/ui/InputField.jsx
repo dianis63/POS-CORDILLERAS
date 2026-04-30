@@ -1,6 +1,6 @@
 import { COLORS } from "../../constants/colors";
 
-export function InputField({ id, label, type = "text", placeholder }) {
+export function InputField({ id, label, type = "text", placeholder, value, onChange }) {
   return (
     <div className="flex flex-col gap-1.5">
       <label
@@ -14,6 +14,8 @@ export function InputField({ id, label, type = "text", placeholder }) {
         id={id}
         type={type}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
         className="px-4 py-2.5 rounded-lg text-sm outline-none transition-all duration-200"
         style={{
           backgroundColor: COLORS.loginInputBg,
