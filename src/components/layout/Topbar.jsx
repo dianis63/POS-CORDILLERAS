@@ -10,7 +10,7 @@ export function Topbar({ sidebarOpen, setSidebarOpen, breadcrumb, notifOpen, set
 
   return (
     <header
-      className="flex items-center justify-between px-6 border-b flex-shrink-0"
+      className="topbar flex items-center justify-between px-6 border-b flex-shrink-0"
       style={{
         backgroundColor: COLORS.topbarBg,
         borderColor:     COLORS.borderColor,

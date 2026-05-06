@@ -1,7 +1,7 @@
-import { Plus, Minus, Printer, Filter, Search, ArrowUpDown } from "lucide-react";
+import { ArrowUpDown, Plus, Minus, Printer, Search, Filter } from "lucide-react";
 import { COLORS } from "../../constants/colors";
 
-export function EmpleadosToolbar({ selected, onAgregar, onEliminar, busqueda, onBusqueda }) {
+export function EmpleadosToolbar({ selected, onAgregar, onEliminar, busqueda, onBusqueda, onToggleOrden, onImprimir }) {
   return (
     <div
       className="flex items-center justify-between mb-4 px-4 py-3 rounded-xl border"
@@ -9,8 +9,10 @@ export function EmpleadosToolbar({ selected, onAgregar, onEliminar, busqueda, on
     >
       <div className="flex items-center gap-2">
         <button
+          onClick={onToggleOrden}
           className="p-2 rounded-lg border hover:bg-gray-100 transition-colors"
           style={{ borderColor: COLORS.borderColor }}
+          title="Invertir orden"
         >
           <ArrowUpDown size={15} style={{ color: COLORS.textSecondary }} />
         </button>
@@ -50,8 +52,10 @@ export function EmpleadosToolbar({ selected, onAgregar, onEliminar, busqueda, on
 
       <div className="flex items-center gap-2">
         <button
+          onClick={onImprimir}
           className="p-2 rounded-lg border hover:bg-gray-100 transition-colors"
           style={{ borderColor: COLORS.borderColor }}
+          title="Imprimir"
         >
           <Printer size={15} style={{ color: COLORS.textSecondary }} />
         </button>
@@ -70,13 +74,6 @@ export function EmpleadosToolbar({ selected, onAgregar, onEliminar, busqueda, on
             style={{ color: COLORS.textPrimary }}
           />
         </div>
-
-        <button
-          className="p-2 rounded-lg border hover:bg-gray-100 transition-colors"
-          style={{ borderColor: COLORS.borderColor }}
-        >
-          <Filter size={15} style={{ color: COLORS.textSecondary }} />
-        </button>
       </div>
     </div>
   );

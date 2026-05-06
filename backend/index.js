@@ -3,7 +3,10 @@ import session from 'express-session';
 import dotenv from 'dotenv';
 import pool from './src/db.js';
 import authRoutes from './src/routes/authRoutes.js';
-
+import empleadoRoutes from './src/routes/empleadoRoutes.js';
+import categoriaRoutes from './src/routes/categoriaRoutes.js';
+import insumoRoutes    from './src/routes/insumoRoutes.js';
+import productoRoutes from './src/routes/productoRoutes.js';
 dotenv.config();
 
 const app = express();
@@ -18,7 +21,10 @@ app.use(session({
 }));
 
 app.use('/api/auth', authRoutes);
-
+app.use('/api/empleados', empleadoRoutes);
+app.use('/api/categorias', categoriaRoutes);
+app.use('/api/insumos',    insumoRoutes);
+app.use('/api/productos', productoRoutes);
 // Verificar conexión a BD
 pool.query('SELECT NOW()', (err) => {
     if (err) {

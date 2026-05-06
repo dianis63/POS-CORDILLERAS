@@ -22,8 +22,18 @@ export function CategoriaForm({ categoria = null, onSave, onCancel }) {
 
   const validate = () => {
     const e = {};
-    if (!form.nombre.trim())      e.nombre      = "El nombre es obligatorio.";
-    if (!form.descripcion.trim()) e.descripcion = "La descripción es obligatoria.";
+    const soloLetras = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+
+    if (!form.nombre.trim())
+      e.nombre = "El nombre es obligatorio.";
+    else if (!soloLetras.test(form.nombre))
+      e.nombre = "El nombre solo debe contener letras.";
+
+    if (!form.descripcion.trim())
+      e.descripcion = "La descripción es obligatoria.";
+    else if (form.descripcion.trim().length < 10)
+      e.descripcion = "La descripción debe tener al menos 10 caracteres.";
+
     return e;
   };
 

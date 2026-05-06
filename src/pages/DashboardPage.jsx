@@ -28,7 +28,7 @@ const STAT_CARDS = [
   { icon: ShoppingBag, label: "Productos vendidos",  value: "84"       },
 ];
 
-export default function DashboardPage({ currentPage, onNavigate, onLogout }) {
+export default function DashboardPage({ currentPage, onNavigate, onLogout,usuario }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [notifOpen,   setNotifOpen]   = useState(false);
 
@@ -41,6 +41,7 @@ export default function DashboardPage({ currentPage, onNavigate, onLogout }) {
         onLogout={onLogout}
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
+        usuario={usuario} 
       />
 
       <div className="flex-1 flex flex-col overflow-hidden">

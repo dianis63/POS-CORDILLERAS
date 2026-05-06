@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { logoutUsuario } from "./api/authApi";
 import LoginPage     from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import ClientesPage  from "./pages/ClientesPage";
@@ -13,16 +14,32 @@ import EmpleadosPage from "./pages/EmpleadosPage";
 export default function App() {
   const [loggedIn,    setLoggedIn]    = useState(false);
   const [currentPage, setCurrentPage] = useState("estadisticas");
+  const [usuario,     setUsuario]     = useState(null); // ← nuevo
+
+  const handleLogin = (userData) => {
+    console.log("Usuario logueado:", userData);
+    setUsuario(userData);   // { id, tipo, nombre }
+    setLoggedIn(true);
+  };
+
+  const handleLogout = async () => {
+    await logoutUsuario();
+    setLoggedIn(false);
+    setUsuario(null);
+    setCurrentPage("estadisticas");
+  };
 
   if (!loggedIn) {
-    return <LoginPage onLogin={() => setLoggedIn(true)} />;
+    return <LoginPage onLogin={handleLogin} />;  // ← pasa handleLogin
   }
 
   const sharedProps = {
     currentPage,
     onNavigate: setCurrentPage,
-    onLogout:   () => { setLoggedIn(false); setCurrentPage("estadisticas"); },
+    onLogout:   handleLogout,
+    usuario,                  // ← pasa el usuario a todas las páginas
   };
+
 
   switch (currentPage) {
     case "estadisticas": return <DashboardPage {...sharedProps} />;

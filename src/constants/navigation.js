@@ -30,7 +30,7 @@ export const NAV_ITEMS = [
   {
     section: "Personal",
     items: [
-      { key: "empleados", icon: UserCircle, label: "Empleados" },
+      { key: "empleados", icon: UserCircle, label: "Empleados", roles: ["Admin"] },
     ],
   },
 ];

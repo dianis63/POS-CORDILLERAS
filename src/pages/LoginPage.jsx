@@ -15,7 +15,7 @@ export default function LoginPage({ onLogin }) {
       const data = await loginUsuario(usuario, contrasena);
 
       if (data.ok) {
-        onLogin();
+        onLogin(data.usuario);
       } else {
         setError(data.message || "Credenciales incorrectas.");
       }

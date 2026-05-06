@@ -3,9 +3,6 @@ import { LogOut } from "lucide-react";
 import { COLORS } from "../../constants/colors";
 import { NAV_ITEMS } from "../../constants/navigation";
 
-// ─────────────────────────────────────────────
-//  SUB-COMPONENTES INTERNOS
-// ─────────────────────────────────────────────
 function NavSection({ label, children, sidebarOpen }) {
   return (
     <div className="mb-2">
@@ -48,10 +45,8 @@ function NavItem({ icon: Icon, label, active = false, sidebarOpen, onClick }) {
   );
 }
 
-// ─────────────────────────────────────────────
-//  SIDEBAR
-// ─────────────────────────────────────────────
-export function Sidebar({ currentPage, onNavigate, onLogout, sidebarOpen, setSidebarOpen }) {
+export function Sidebar({ currentPage, onNavigate, onLogout, sidebarOpen, setSidebarOpen, usuario }) {
+  console.log("Sidebar usuario:", usuario);
   return (
     <aside
       className="flex-shrink-0 flex flex-col border-r h-full overflow-y-auto transition-all duration-300"
@@ -86,20 +81,26 @@ export function Sidebar({ currentPage, onNavigate, onLogout, sidebarOpen, setSid
 
       {/* Nav */}
       <div className="flex-1 py-3">
-        {NAV_ITEMS.map(({ section, items }) => (
-          <NavSection key={section} label={section} sidebarOpen={sidebarOpen}>
-            {items.map(({ key, icon, label }) => (
-              <NavItem
-                key={key}
-                icon={icon}
-                label={label}
-                active={currentPage === key}
-                sidebarOpen={sidebarOpen}
-                onClick={() => onNavigate(key)}
-              />
-            ))}
-          </NavSection>
-        ))}
+        {NAV_ITEMS.map(({ section, items }) => {
+          const itemsFiltrados = items.filter(({ roles }) =>
+            !roles || roles.includes(usuario?.tipo)
+          );
+          if (itemsFiltrados.length === 0) return null;
+          return (
+            <NavSection key={section} label={section} sidebarOpen={sidebarOpen}>
+              {itemsFiltrados.map(({ key, icon, label }) => (
+                <NavItem
+                  key={key}
+                  icon={icon}
+                  label={label}
+                  active={currentPage === key}
+                  sidebarOpen={sidebarOpen}
+                  onClick={() => onNavigate(key)}
+                />
+              ))}
+            </NavSection>
+          );
+        })}
       </div>
 
       {/* Logout */}
