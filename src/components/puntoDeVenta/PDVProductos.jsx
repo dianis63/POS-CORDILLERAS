@@ -2,7 +2,7 @@ import { PlusCircle, Search } from "lucide-react";
 import { useState }           from "react";
 import { COLORS }             from "../../constants/colors";
 
-export function PDVProductos({ productos, categoriaActiva, onAgregar }) {
+export function PDVProductos({ productos, categoriaActiva, onAgregar, esPagada  }) {
   const [busqueda, setBusqueda] = useState("");
 
   const filtrados = productos.filter(
@@ -75,9 +75,10 @@ export function PDVProductos({ productos, categoriaActiva, onAgregar }) {
               </span>
               <button
                 onClick={() => onAgregar(p)}
-                className="transition-opacity hover:opacity-70"
+                disabled={esPagada}
+                className="transition-opacity hover:opacity-70 disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                <PlusCircle size={22} style={{ color: COLORS.accentBlue }} />
+                <PlusCircle size={22} style={{ color: esPagada ? COLORS.textSecondary : COLORS.accentBlue }} />
               </button>
             </div>
           </div>

@@ -1,12 +1,9 @@
 import { Trash2, Minus, Plus, XCircle, CheckCircle, ShoppingCart, NotebookPen } from "lucide-react";
 import { COLORS } from "../../constants/colors";
 
-const DESCUENTO = 0.10;
-
-export function PDVTicket({ items, cliente, onClienteChange, onCambiarCantidad, onEliminar, onCancelar, onGuardar, onPagar, onNota }) {
-  const subtotal  = items.reduce((acc, i) => acc + i.precio * i.cantidad, 0);
-  const descuento = subtotal * DESCUENTO;
-  const total     = subtotal - descuento;
+export function PDVTicket({ items, cliente, onClienteChange, onCambiarCantidad, onEliminar, onCancelar, onGuardar, onPagar, onNota, ventaGuardada, esEdicion, esPagada, horaVenta, fechaVenta }) {
+  const subtotal = items.reduce((acc, i) => acc + i.precio * i.cantidad, 0);
+  const total    = subtotal;
 
   return (
     <div className="w-96 flex-shrink-0 flex flex-col gap-3">
@@ -15,15 +12,16 @@ export function PDVTicket({ items, cliente, onClienteChange, onCambiarCantidad, 
       <div className="flex gap-2">
         <button
           onClick={onNota}
-          className="p-2 rounded-xl border transition-colors hover:bg-gray-50"
-          title="Agregar nota al pedido"
+          disabled={esPagada}
+          className="p-2 rounded-xl border transition-colors hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
           style={{ borderColor: COLORS.borderColor }}
         >
           <NotebookPen size={16} style={{ color: COLORS.textSecondary }} />
         </button>
         <button
           onClick={onCancelar}
-          className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-sm font-medium border transition-colors hover:bg-red-50"
+          disabled={esPagada || esEdicion}
+          className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-sm font-medium border transition-colors hover:bg-red-50 disabled:opacity-40 disabled:cursor-not-allowed"
           style={{ borderColor: "#fca5a5", color: COLORS.accentRed, backgroundColor: COLORS.accentRedLight }}
         >
           <XCircle size={15} />
@@ -31,11 +29,16 @@ export function PDVTicket({ items, cliente, onClienteChange, onCambiarCantidad, 
         </button>
         <button
           onClick={onGuardar}
-          className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-sm font-medium border transition-colors hover:opacity-90"
-          style={{ borderColor: "#86efac", color: "#16a34a", backgroundColor: "#dcfce7" }}
+          disabled={esPagada || (ventaGuardada && !esEdicion)}
+          className="flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-sm font-medium border transition-colors hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
+          style={{
+            borderColor:     esPagada ? "#d1d5db" : "#86efac",
+            color:           esPagada ? COLORS.textSecondary : "#16a34a",
+            backgroundColor: esPagada ? "#f3f4f6" : "#dcfce7",
+          }}
         >
           <CheckCircle size={15} />
-          Guardar venta
+          {esPagada ? "Venta pagada" : esEdicion ? "Guardar cambios" : ventaGuardada ? "Ya guardada" : "Guardar venta"}
         </button>
       </div>
 
@@ -55,19 +58,24 @@ export function PDVTicket({ items, cliente, onClienteChange, onCambiarCantidad, 
               type="text"
               placeholder="Nombre o mesa"
               value={cliente ?? ""}
-              onChange={(e) => onClienteChange(e.target.value)}
-              className="text-base font-bold bg-transparent outline-none border-b transition-colors w-full"
-              style={{
-                color:       COLORS.textPrimary,
-                borderColor: COLORS.borderColor,
+              onChange={(e) => {
+                  const val = e.target.value;
+                  if (/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ0-9 .,\-#/'()!¡?¿]*$/.test(val)) {
+                      onClienteChange(val);
+                  }
               }}
-              onFocus={(e)  => (e.target.style.borderColor = COLORS.accentBlue)}
+              disabled={esPagada}
+              className="text-base font-bold bg-transparent outline-none border-b transition-colors w-full disabled:cursor-not-allowed"
+              style={{ color: COLORS.textPrimary, borderColor: COLORS.borderColor }}
+              onFocus={(e)  => { if (!esPagada) e.target.style.borderColor = COLORS.accentBlue; }}
               onBlur={(e)   => (e.target.style.borderColor = COLORS.borderColor)}
             />
             <div className="flex items-center gap-4 mt-1.5">
-              <span className="text-xs" style={{ color: COLORS.textSecondary }}>--:-- --</span>
               <span className="text-xs" style={{ color: COLORS.textSecondary }}>
-                {new Date().toLocaleDateString("es-SV", { month: "long", day: "numeric", year: "numeric" })}
+                {horaVenta || "--:-- --"}
+              </span>
+              <span className="text-xs" style={{ color: COLORS.textSecondary }}>
+                {fechaVenta || new Date().toLocaleDateString("es-SV", { month: "long", day: "numeric", year: "numeric" })}
               </span>
             </div>
           </div>
@@ -101,7 +109,8 @@ export function PDVTicket({ items, cliente, onClienteChange, onCambiarCantidad, 
                 <div className="flex items-center gap-1">
                   <button
                     onClick={() => onCambiarCantidad(item.id, -1)}
-                    className="w-6 h-6 rounded-lg flex items-center justify-center border hover:bg-gray-100"
+                    disabled={esPagada}
+                    className="w-6 h-6 rounded-lg flex items-center justify-center border hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed"
                     style={{ borderColor: COLORS.borderColor }}
                   >
                     <Minus size={11} />
@@ -111,7 +120,8 @@ export function PDVTicket({ items, cliente, onClienteChange, onCambiarCantidad, 
                   </span>
                   <button
                     onClick={() => onCambiarCantidad(item.id, 1)}
-                    className="w-6 h-6 rounded-lg flex items-center justify-center border hover:bg-gray-100"
+                    disabled={esPagada}
+                    className="w-6 h-6 rounded-lg flex items-center justify-center border hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed"
                     style={{ borderColor: COLORS.borderColor }}
                   >
                     <Plus size={11} />
@@ -122,7 +132,11 @@ export function PDVTicket({ items, cliente, onClienteChange, onCambiarCantidad, 
                 <span className="text-sm font-medium" style={{ color: COLORS.textPrimary }}>
                   $ {(item.precio * item.cantidad).toFixed(2)}
                 </span>
-                <button onClick={() => onEliminar(item.id)} className="ml-2 hover:opacity-70 transition-opacity">
+                <button
+                  onClick={() => onEliminar(item.id)}
+                  disabled={esPagada}
+                  className="ml-2 hover:opacity-70 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
+                >
                   <Trash2 size={14} style={{ color: COLORS.textSecondary }} />
                 </button>
               </div>
@@ -145,21 +159,18 @@ export function PDVTicket({ items, cliente, onClienteChange, onCambiarCantidad, 
             <p className="text-xs mt-1" style={{ color: COLORS.textSecondary }}>
               Subtotal: <span style={{ color: COLORS.textPrimary }}>$ {subtotal.toFixed(2)}</span>
             </p>
-            <p className="text-xs" style={{ color: COLORS.textSecondary }}>
-              Descuento: <span style={{ color: COLORS.accentRed }}>$ {descuento.toFixed(2)}</span>
-            </p>
           </div>
           <button
             onClick={onPagar}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-white hover:opacity-90 transition-opacity"
-            style={{ backgroundColor: COLORS.accentBlue }}
+            disabled={esPagada}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-white hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed"
+            style={{ backgroundColor: esPagada ? "#9ca3af" : COLORS.accentBlue }}
           >
             <ShoppingCart size={15} />
-            Completar pago
+            {esPagada ? "Ya pagado" : "Completar pago"}
           </button>
         </div>
       </div>
-
     </div>
   );
 }

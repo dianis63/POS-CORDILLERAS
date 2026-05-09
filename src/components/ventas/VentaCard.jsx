@@ -38,7 +38,9 @@ export function VentaCard({ venta, onVer }) {
 
       {/* Cliente y total */}
       <div className="flex items-center justify-between">
-        <p className="text-sm font-medium" style={{ color: COLORS.textPrimary }}>{venta.cliente}</p>
+        <p className="text-sm font-medium" style={{ color: COLORS.textPrimary }}>
+          {venta.cliente}
+        </p>
         <p className="text-sm font-bold"   style={{ color: COLORS.textPrimary }}>
           $ {venta.total.toFixed(2)}
         </p>
@@ -69,14 +71,14 @@ export function VentaCard({ venta, onVer }) {
       </div>
 
       {/* Botón Ver */}
+      
       <button
         onClick={() => onVer(venta)}
-        disabled={completado}
-        className="mt-1 w-full py-2 rounded-xl text-sm font-medium flex items-center justify-center gap-2 transition-opacity hover:opacity-80 disabled:opacity-40 disabled:cursor-not-allowed"
-        style={{ backgroundColor: COLORS.statCardBg, color: COLORS.accentBlue }}
+        className="mt-1 w-full py-2 rounded-xl text-sm font-medium flex items-center justify-center gap-2 transition-opacity hover:opacity-80"
+        style={{ backgroundColor: COLORS.statCardBg, color: pagado ? COLORS.textSecondary : COLORS.accentBlue }}
       >
         <Eye size={14} />
-        Ver venta
+        {pagado ? "Ver detalle" : "Ver venta"}
       </button>
     </div>
   );

@@ -7,6 +7,11 @@ import empleadoRoutes from './src/routes/empleadoRoutes.js';
 import categoriaRoutes from './src/routes/categoriaRoutes.js';
 import insumoRoutes    from './src/routes/insumoRoutes.js';
 import productoRoutes from './src/routes/productoRoutes.js';
+import ventaRoutes from './src/routes/ventaRoutes.js';
+import dashboardRoutes from './src/routes/dashboardRoutes.js';
+import reporteRoutes from './src/routes/reporteRoutes.js';
+
+
 dotenv.config();
 
 const app = express();
@@ -25,6 +30,10 @@ app.use('/api/empleados', empleadoRoutes);
 app.use('/api/categorias', categoriaRoutes);
 app.use('/api/insumos',    insumoRoutes);
 app.use('/api/productos', productoRoutes);
+app.use('/api/ventas', ventaRoutes);
+app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/reportes', reporteRoutes);
+
 // Verificar conexión a BD
 pool.query('SELECT NOW()', (err) => {
     if (err) {

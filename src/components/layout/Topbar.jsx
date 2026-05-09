@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { COLORS } from "../../constants/colors";
 
-export function Topbar({ sidebarOpen, setSidebarOpen, breadcrumb, notifOpen, setNotifOpen }) {
+export function Topbar({ sidebarOpen, setSidebarOpen, breadcrumb, notifOpen, setNotifOpen, notifs  }) {
   const [busqueda, setBusqueda] = useState("");
 
   return (
@@ -71,18 +71,20 @@ export function Topbar({ sidebarOpen, setSidebarOpen, breadcrumb, notifOpen, set
         </button>
 
         {/* Campana */}
-        <div className="relative">
-          <button
-            onClick={() => setNotifOpen(!notifOpen)}
-            className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors relative"
-          >
-            <Bell
-              size={16}
-              style={{ color: notifOpen ? COLORS.accentBlue : COLORS.textSecondary }}
-            />
-            <span className="absolute top-0.5 right-0.5 w-2 h-2 rounded-full bg-red-500" />
-          </button>
-        </div>
+          <div className="relative">
+            <button
+              onClick={() => setNotifOpen(!notifOpen)}
+              className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors relative"
+            >
+              <Bell
+                size={16}
+                style={{ color: notifOpen ? COLORS.accentBlue : COLORS.textSecondary }}
+              />
+              {(notifs?.productosVencer?.length > 0 || notifs?.productosAgotar?.length > 0) && (
+                <span className="absolute top-0.5 right-0.5 w-2 h-2 rounded-full bg-red-500" />
+              )}
+            </button>
+          </div>
 
         <button className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors">
           <CircleUserRound size={18} style={{ color: COLORS.textSecondary }} />

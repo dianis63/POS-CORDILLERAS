@@ -12,7 +12,7 @@ import { COLORS }                    from "../constants/colors";
 
 const PER_PAGE = 10;
 
-export default function EmpleadosPage({ currentPage, onNavigate, onLogout,usuario }) {
+export default function EmpleadosPage({ currentPage, onNavigate, onLogout,usuario, notifs, refrescarNotifs   }) {
   const [empleados,   setEmpleados]   = useState([]);
   const [loading,     setLoading]     = useState(true);
   const [selected,    setSelected]    = useState([]);
@@ -166,11 +166,16 @@ const ordenarPorColumna = (col) => {
 
       <div className="flex-1 flex flex-col overflow-hidden">
         <Topbar
-          sidebarOpen={sidebarOpen}
-          setSidebarOpen={setSidebarOpen}
-          breadcrumb={["Personal", "Empleados"]}
-          notifOpen={notifOpen}
-          setNotifOpen={setNotifOpen}
+            sidebarOpen={sidebarOpen}
+            setSidebarOpen={setSidebarOpen}
+            breadcrumb={["Personal", "Empleados"]}
+            notifOpen={notifOpen}
+            setNotifOpen={(val) => {
+                if (val) refrescarNotifs();
+                setNotifOpen(val);
+            }}
+            esAdmin={usuario?.tipo?.toLowerCase() === "admin"}
+            notifs={notifs}
         />
 
         <main className="flex-1 overflow-y-auto p-6">
@@ -225,8 +230,8 @@ const ordenarPorColumna = (col) => {
 
       {notifOpen && (
         <NotifPanel
-          productosVencer={productosVencer}
-          productosAgotar={productosAgotar}
+          productosVencer={notifs.productosVencer}
+          productosAgotar={notifs.productosAgotar}
           onClose={() => setNotifOpen(false)}
         />
       )}

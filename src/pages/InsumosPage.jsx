@@ -12,7 +12,7 @@ import { COLORS }                 from "../constants/colors";
 
 const PER_PAGE = 10;
 
-export default function InsumosPage({ currentPage, onNavigate, onLogout, usuario }) {
+export default function InsumosPage({ currentPage, onNavigate, onLogout, usuario, notifs, refrescarNotifs   }) {
   const [insumos,     setInsumos]     = useState([]);
   const [loading,     setLoading]     = useState(true);
   const [selected,    setSelected]    = useState([]);
@@ -124,8 +124,19 @@ export default function InsumosPage({ currentPage, onNavigate, onLogout, usuario
         sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} usuario={usuario} />
 
       <div className="flex-1 flex flex-col overflow-hidden">
-        <Topbar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen}
-          breadcrumb={["Inventario", "Insumos"]} notifOpen={notifOpen} setNotifOpen={setNotifOpen} />
+        <Topbar
+            sidebarOpen={sidebarOpen}
+            setSidebarOpen={setSidebarOpen}
+            breadcrumb={["Inventario", "Insumos"]}
+            notifOpen={notifOpen}
+            setNotifOpen={(val) => {
+                if (val) refrescarNotifs();
+                setNotifOpen(val);
+            }}
+            esAdmin={usuario?.tipo?.toLowerCase() === "admin"}
+             notifs={notifs}
+ 
+        />
 
         <main className="flex-1 overflow-y-auto p-6">
           <h1 className="text-xl font-bold mb-5" style={{ color: COLORS.textPrimary }}>Insumos</h1>
@@ -161,7 +172,13 @@ export default function InsumosPage({ currentPage, onNavigate, onLogout, usuario
         </main>
       </div>
 
-      {notifOpen && <NotifPanel productosVencer={productosVencer} productosAgotar={productosAgotar} onClose={() => setNotifOpen(false)} />}
+      {notifOpen && (
+        <NotifPanel
+          productosVencer={notifs.productosVencer}
+          productosAgotar={notifs.productosAgotar}
+          onClose={() => setNotifOpen(false)}
+        />
+      )}
     </div>
   );
 }
