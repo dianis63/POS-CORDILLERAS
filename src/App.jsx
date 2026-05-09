@@ -66,7 +66,7 @@ export default function App() {
   const sharedProps = {
     currentPage,
     onNavigate: (page) => {
-      const soloAdmin = ["estadisticas", "reportes"];
+      const soloAdmin = ["estadisticas", "reportes", "empleados"];
       if (soloAdmin.includes(page) && !esAdmin) return;
       if (currentPage === "punto-de-venta" && page !== "punto-de-venta") {
         setVentaEditar(null);
@@ -75,7 +75,6 @@ export default function App() {
     },
     onLogout: handleLogout,
     usuario,
-    // Solo admins ven notificaciones
     notifs: notifs,
     refrescarNotifs,
   };

@@ -46,15 +46,12 @@ function NavItem({ icon: Icon, label, active = false, sidebarOpen, onClick }) {
   );
 }
 
-// Items que solo los admin pueden ver
-const SOLO_ADMIN = ["estadisticas", "reportes"];
-
 // ─────────────────────────────────────────────
 //  SIDEBAR
 // ─────────────────────────────────────────────
 export function Sidebar({ currentPage, onNavigate, onLogout, sidebarOpen, setSidebarOpen, usuario }) {
-  console.log("Sidebar usuario:", usuario);
   const esAdmin = usuario?.tipo?.toLowerCase() === "admin";
+  const rolActual = esAdmin ? "Admin" : "Empleado";
 
   return (
     <aside
@@ -91,8 +88,8 @@ export function Sidebar({ currentPage, onNavigate, onLogout, sidebarOpen, setSid
       {/* Nav */}
       <div className="flex-1 py-3">
         {NAV_ITEMS.map(({ section, items }) => {
-          const itemsFiltrados = items.filter(
-            ({ key }) => esAdmin || !SOLO_ADMIN.includes(key)
+          const itemsFiltrados = items.filter(({ roles }) =>
+            !roles || roles.includes(rolActual)
           );
 
           if (itemsFiltrados.length === 0) return null;

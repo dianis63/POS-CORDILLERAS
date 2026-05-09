@@ -7,8 +7,8 @@ export const NAV_ITEMS = [
   {
     section: "Dashboard",
     items: [
-      { key: "estadisticas", icon: LayoutDashboard, label: "Estadísticas" },
-      { key: "reportes",     icon: FileText,        label: "Reportes"     },
+      { key: "estadisticas", icon: LayoutDashboard, label: "Estadísticas", roles: ["Admin"] },
+      { key: "reportes",     icon: FileText,        label: "Reportes",     roles: ["Admin"] },
     ],
   },
   {
