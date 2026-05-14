@@ -16,7 +16,6 @@ export const NAV_ITEMS = [
     items: [
       { key: "punto-de-venta", icon: ShoppingCart, label: "Punto de venta" },
       { key: "ventas",         icon: TrendingUp,   label: "Ventas"         },
-      { key: "clientes",       icon: Users,        label: "Clientes"       },
     ],
   },
   {

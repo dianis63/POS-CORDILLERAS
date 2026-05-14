@@ -3,7 +3,6 @@ import { logoutUsuario }  from "./api/authApi";
 import { getNotifs }       from "./api/dashboardApi";
 import LoginPage        from "./pages/LoginPage";
 import DashboardPage    from "./pages/DashboardPage";
-import ClientesPage     from "./pages/ClientesPage";
 import ProductosPage    from "./pages/ProductosPage";
 import InsumosPage      from "./pages/InsumosPage";
 import CategoriasPage   from "./pages/CategoriasPage";
@@ -86,7 +85,6 @@ export default function App() {
 
   switch (currentPage) {
     case "estadisticas":   return <DashboardPage    {...sharedProps} />;
-    case "clientes":       return <ClientesPage     {...sharedProps} />;
     case "productos":      return <ProductosPage    {...sharedProps} />;
     case "insumos":        return <InsumosPage      {...sharedProps} />;
     case "categorias":     return <CategoriasPage   {...sharedProps} />;
