@@ -7,7 +7,6 @@ import { ProductosPagination }     from "../components/productos/ProductosPagina
 import { ProductoForm }            from "../components/productos/ProductoForm";
 import { NotifPanel }              from "../components/dashboard/NotifPanel";
 import { getProductos, crearProducto, actualizarProducto, eliminarProducto } from "../api/productoApi";
-import { productosVencer, productosAgotar } from "../data/mockData";
 import { COLORS }                  from "../constants/colors";
 
 const PER_PAGE = 10;

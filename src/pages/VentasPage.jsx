@@ -6,7 +6,6 @@ import { VentaStatCard }         from "../components/ventas/VentaStatCard";
 import { VentaCard }             from "../components/ventas/VentaCard";
 import { NotifPanel }            from "../components/dashboard/NotifPanel";
 import { getVentas }             from "../api/ventaApi";
-import { productosVencer, productosAgotar } from "../data/mockData";
 import { COLORS }                from "../constants/colors";
 
 export default function VentasPage({ currentPage, onNavigate, onLogout, usuario, onVerVenta, notifs, refrescarNotifs  }) {

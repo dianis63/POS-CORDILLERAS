@@ -7,7 +7,6 @@ import { EmpleadosPagination }       from "../components/empleados/EmpleadosPagi
 import { EmpleadoForm }              from "../components/empleados/EmpleadoForm";
 import { NotifPanel }                from "../components/dashboard/NotifPanel";
 import { getEmpleados, crearEmpleado, actualizarEmpleado, eliminarEmpleado } from "../api/empleadoApi";
-import { productosVencer, productosAgotar } from "../data/mockData";
 import { COLORS }                    from "../constants/colors";
 
 const PER_PAGE = 10;

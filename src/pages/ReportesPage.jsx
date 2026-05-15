@@ -7,7 +7,6 @@ import {
     getVentasCategorias, getAuditoria,
     registrarAcceso, registrarDescarga,
 } from "../api/reporteApi";
-import { productosVencer, productosAgotar } from "../data/mockData";
 import { COLORS } from "../constants/colors";
 import {
     Calendar, Clock, Printer,

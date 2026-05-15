@@ -10,7 +10,6 @@ import { NotifPanel }           from "../components/dashboard/NotifPanel";
 import { getCategorias }        from "../api/categoriaApi";
 import { getProductos }         from "../api/productoApi";
 import { crearVenta, completarPago, cancelarVenta, getVentaPorId, actualizarVenta } from "../api/ventaApi";
-import { productosVencer, productosAgotar } from "../data/mockData";
 import { COLORS }               from "../constants/colors";
 
 export default function PuntoDeVentaPage({ currentPage, onNavigate, onLogout, usuario, ventaEditar, onLimpiarVenta, notifs, refrescarNotifs }) {

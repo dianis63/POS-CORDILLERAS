@@ -7,7 +7,6 @@ import { InsumosPagination }      from "../components/insumos/InsumosPagination"
 import { InsumoForm }             from "../components/insumos/InsumoForm";
 import { NotifPanel }             from "../components/dashboard/NotifPanel";
 import { getInsumos, crearInsumo, actualizarInsumo, eliminarInsumo } from "../api/insumoApi";
-import { productosVencer, productosAgotar } from "../data/mockData";
 import { COLORS }                 from "../constants/colors";
 
 const PER_PAGE = 10;

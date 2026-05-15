@@ -7,7 +7,6 @@ import { CategoriasPagination }    from "../components/categorias/CategoriasPagi
 import { CategoriaForm }           from "../components/categorias/CategoriaForm";
 import { NotifPanel }              from "../components/dashboard/NotifPanel";
 import { getCategorias, crearCategoria, actualizarCategoria, eliminarCategoria } from "../api/categoriaApi";
-import { productosVencer, productosAgotar } from "../data/mockData";
 import { COLORS }                  from "../constants/colors";
 
 const PER_PAGE = 10;
