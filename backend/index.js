@@ -10,7 +10,7 @@ import productoRoutes from './src/routes/productoRoutes.js';
 import ventaRoutes from './src/routes/ventaRoutes.js';
 import dashboardRoutes from './src/routes/dashboardRoutes.js';
 import reporteRoutes from './src/routes/reporteRoutes.js';
-
+import chatbotRoutes from './src/routes/chatbotRoutes.js';
 
 dotenv.config();
 
@@ -33,6 +33,7 @@ app.use('/api/productos', productoRoutes);
 app.use('/api/ventas', ventaRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/reportes', reporteRoutes);
+app.use('/api/chatbot', chatbotRoutes);
 
 // Verificar conexión a BD
 pool.query('SELECT NOW()', (err) => {

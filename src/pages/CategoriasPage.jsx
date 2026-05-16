@@ -118,6 +118,7 @@ export default function CategoriasPage({ currentPage, onNavigate, onLogout, usua
             }}
             esAdmin={usuario?.tipo?.toLowerCase() === "admin"}
             notifs={notifs}
+            usuario={usuario}
 
         />
 

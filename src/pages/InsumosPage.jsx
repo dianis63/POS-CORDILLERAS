@@ -134,7 +134,7 @@ export default function InsumosPage({ currentPage, onNavigate, onLogout, usuario
             }}
             esAdmin={usuario?.tipo?.toLowerCase() === "admin"}
              notifs={notifs}
- 
+             usuario={usuario}
         />
 
         <main className="flex-1 overflow-y-auto p-6">

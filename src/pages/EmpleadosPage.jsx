@@ -175,6 +175,7 @@ const ordenarPorColumna = (col) => {
             }}
             esAdmin={usuario?.tipo?.toLowerCase() === "admin"}
             notifs={notifs}
+            usuario={usuario}
         />
 
         <main className="flex-1 overflow-y-auto p-6">

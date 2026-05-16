@@ -59,6 +59,7 @@ export default function DashboardPage({ currentPage, onNavigate, onLogout, usuar
             }}
             esAdmin={usuario?.tipo?.toLowerCase() === "admin"}
             notifs={notifs}
+            usuario={usuario}
         />
 
 

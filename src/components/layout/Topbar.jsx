@@ -6,7 +6,7 @@ import {
 import { COLORS } from "../../constants/colors";
 import { ChatBotModal } from "./ChatBot";
 
-export function Topbar({ sidebarOpen, setSidebarOpen, breadcrumb, notifOpen, setNotifOpen, notifs }) {
+export function Topbar({ sidebarOpen, setSidebarOpen, breadcrumb, notifOpen, setNotifOpen, notifs,usuario }) {
   const [busqueda,    setBusqueda]    = useState("");
   const [chatOpen,    setChatOpen]    = useState(false);
 
@@ -110,7 +110,7 @@ export function Topbar({ sidebarOpen, setSidebarOpen, breadcrumb, notifOpen, set
       </header>
 
       {/* Modal del ChatBot — fuera del header para no quedar cortado */}
-      <ChatBotModal open={chatOpen} onClose={() => setChatOpen(false)} />
+      <ChatBotModal open={chatOpen} onClose={() => setChatOpen(false)} usuario={usuario} />
     </>
   );
 }

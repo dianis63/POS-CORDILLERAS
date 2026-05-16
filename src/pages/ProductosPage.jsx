@@ -131,6 +131,7 @@ export default function ProductosPage({ currentPage, onNavigate, onLogout, usuar
             }}
             esAdmin={usuario?.tipo?.toLowerCase() === "admin"}
             notifs={notifs}
+            usuario={usuario}
         />
 
 

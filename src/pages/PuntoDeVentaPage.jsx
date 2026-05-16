@@ -183,6 +183,7 @@ export default function PuntoDeVentaPage({ currentPage, onNavigate, onLogout, us
             }}
             esAdmin={usuario?.tipo?.toLowerCase() === "admin"}
             notifs={notifs}
+            usuario={usuario}
         />
 
 

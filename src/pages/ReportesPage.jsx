@@ -413,6 +413,7 @@ export default function ReportesPage({ currentPage, onNavigate, onLogout, usuari
             }}
             esAdmin={usuario?.tipo?.toLowerCase() === "admin"}
             notifs={notifs}
+            usuario={usuario}
         />
 
         
