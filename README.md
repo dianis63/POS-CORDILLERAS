@@ -1,18 +1,36 @@
-# React + Vite
+# POS-Cordilleras ☕
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Sistema de punto de venta para Cordilleras Specialty Coffee.**
 
-Currently, two official plugins are available:
+POS-Cordilleras es una plataforma web desarrollada para automatizar y centralizar los procesos de inventario, comandas, ventas y pagos de una cafetería, facilitando la gestión de recursos y el control de las operaciones diarias.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Tecnologías utilizadas
 
-## React Compiler
+- **Frontend:** React.
+- **Backend:** Node.js y Express.
+- **Base de datos:** PostgreSQL.
+- **Herramientas:** Visual Studio Code y GitHub.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## 📋 Funcionalidades
 
-Note: This will impact Vite dev & build performances.
+- **Inventario:** Gestión de productos, insumos y categorías.
+- **Comandas:** Registro y administración de pedidos.
+- **Ventas y pagos:** Control de operaciones de venta.
+- **Reportes:** Información de ventas y gastos.
+- **Dashboard:** Visualización de estadísticas e indicadores.
+- **Chatbot inteligente:** Asistente para consultar información del sistema.
+- **Alertas automáticas:** Notificaciones sobre inventario crítico y vencimiento de insumos.
 
-## Expanding the ESLint configuration
+## 🎯 Objetivo
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Desarrollar un sistema integral que permita optimizar la gestión, el control de recursos y los procesos operativos de Cordilleras Specialty Coffee.
+
+## 👥 Equipo
+
+Proyecto universitario desarrollado colaborativamente como parte de la formación académica en Ingeniería de Sistemas.
+
+**Diana Avilés** – Project Manager / Backend.
+
+---
+
+**POS-Cordilleras © 2026**
