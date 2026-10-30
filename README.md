@@ -21,6 +21,39 @@ POS-Cordilleras es una plataforma web desarrollada para automatizar y centraliza
 - **Chatbot inteligente:** Asistente para consultar información del sistema.
 - **Alertas automáticas:** Notificaciones sobre inventario crítico y vencimiento de insumos.
 
+## ⚙️ Requisitos e instalación
+
+### Requisitos previos
+
+- Node.js y npm.
+- PostgreSQL.
+- Git.
+- Visual Studio Code (recomendado).
+
+### Instalación
+
+1. Clonar el repositorio:
+
+   ```bash
+   git clone URL_DEL_REPOSITORIO
+   ```
+
+2. Entrar a la carpeta del proyecto:
+
+   ```bash
+   cd POS-Cordilleras
+   ```
+
+3. Instalar las dependencias con npm en las carpetas del frontend y backend:
+
+   ```bash
+   npm install
+   ```
+
+4. Configurar las variables de entorno necesarias para la conexión con PostgreSQL.
+
+5. Ejecutar el frontend y backend utilizando los scripts definidos en sus respectivos archivos `package.json`.
+
 ## 🎯 Objetivo
 
 Desarrollar un sistema integral que permita optimizar la gestión, el control de recursos y los procesos operativos de Cordilleras Specialty Coffee.
@@ -34,3 +67,5 @@ Proyecto universitario desarrollado colaborativamente como parte de la formació
 ---
 
 **POS-Cordilleras © 2026**
+
+
